@@ -19,13 +19,13 @@
                         <a class="nav-link btn btn-primary btn-block" href="/">Home</a>
                     </li>
                     <li class="nav-item m-2">
-                        <a class="nav-link btn btn-success btn-block" href="{{ route('classrooms.create') }}">Create Classroom</a>
+                        <a class="nav-link btn btn-success btn-block" href="{{ route('classrooms.create') }}">Add Classroom</a>
                     </li>
                     <li class="nav-item m-2">
-                        <a class="nav-link btn btn-info btn-block" href="{{ route('teachers.create') }}">Create Teacher</a>
+                        <a class="nav-link btn btn-info btn-block" href="{{ route('teachers.create') }}">Add Teacher</a>
                     </li>
                     <li class="nav-item m-2">
-                        <a class="nav-link btn btn-warning btn-block" href="{{ route('teaching-assistants.create') }}">Create Teaching Assistant</a>
+                        <a class="nav-link btn btn-warning btn-block" href="{{ route('teaching-assistants.create') }}">Add Teaching Assistant</a>
                     </li>
                 </ul>
             </div>
