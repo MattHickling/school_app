@@ -19,8 +19,7 @@ class TeacherController extends Controller
     
     public function create()
     {
-        $classes = ['Class 1', 'Class 2', 'Class 3']; // Replace with your actual data
-        return View::make('teachers.create')->with('classes', $classes);
+        return view('teachers.create');
     }
     
     public function store(Request $request)

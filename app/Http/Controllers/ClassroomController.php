@@ -19,9 +19,9 @@ public function show($id)
 
 public function create()
 {
-    $classes = ['Class 1', 'Class 2', 'Class 3'];
-    return view('classrooms.create', compact('classes'));
+    return view('classrooms.create');
 }
+
 public function store(Request $request)
 {
     // Logic for storing a new resource

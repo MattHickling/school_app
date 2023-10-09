@@ -1,27 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeachingAssistantController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Home route
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', function () {return view('welcome');});
-    
-Route::get('/classrooms/create', 'ClassroomController@create')->name('classrooms.create');
-Route::post('/classrooms', 'ClassroomController@store')->name('classrooms.store');
+// Classroom routes
+Route::get('/classrooms/create', [ClassroomController::class, 'create'])->name('classrooms.create');
+Route::post('/classrooms', [ClassroomController::class, 'store'])->name('classrooms.store');
 
-// Route for creating teachers
-Route::get('/teachers/create', 'TeacherController@create')->name('teachers.create');
-Route::post('/teachers', 'TeacherController@store')->name('teachers.store');
+// Teacher routes
+Route::get('/teachers/create', [TeacherController::class, 'create'])->name('teachers.create');
+Route::post('/teachers', [TeacherController::class, 'store'])->name('teachers.store');
 
-// Route for creating teaching assistants
-Route::get('/teaching-assistants/create', 'TeachingAssistantController@create')->name('teaching-assistants.create');
-Route::post('/teaching-assistants', 'TeachingAssistantController@store')->name('teaching-assistants.store');
+// Teaching Assistant routes
+Route::get('/teaching-assistants/create', [TeachingAssistantController::class, 'create'])->name('teaching-assistants.create');
+Route::post('/teaching-assistants', [TeachingAssistantController::class, 'store'])->name('teaching-assistants.store');
