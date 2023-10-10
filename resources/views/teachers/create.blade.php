@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@include('layouts.header')
 @section('content')
     <div class="container">
         <h2>Create a New Teacher</h2>
@@ -36,4 +35,3 @@
         </form>
     </div>
 @endsection
-@include('layouts.footer')

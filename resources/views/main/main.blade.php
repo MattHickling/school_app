@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>School Year and Class Selector</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    @include('layouts.header')
+
+@extends('layouts.app')
+
+@section('content')
 
         
         <form id="schoolSelectorForm">
@@ -24,6 +18,8 @@
             <div id="yearSelectors"></div>
         </form>
     </div>
+    @endsection
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -64,25 +60,7 @@
             });
         }
 
-        function generateClassSelectors(yearNumber, numberOfClasses) {
-            const classSelectors = $(`#classSelectorsYear${yearNumber}`);
-            classSelectors.empty();
-
-            for (let i = 1; i <= numberOfClasses; i++) {
-                classSelectors.append(`
-                    <div class="form-group">
-                        <label for="classNameYear${yearNumber}Class${i}">Class ${i}:</label>
-                        <select class="form-control" id="classNameYear${yearNumber}Class${i}">
-                            <option value="">Select...</option>
-                                @foreach ($classes as $class)
-                                <option value="{{ $class }}">{{ $class }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                `);
-            }
-        }
-
+       
         function redirectToCreateClass() {
             window.location.href = '{{ route('classrooms.create') }}';
         }
@@ -95,5 +73,5 @@
             window.location.href = '{{ route('teaching-assistants.create') }}';
         }
     </script>
-</body>
-</html>
+
+
