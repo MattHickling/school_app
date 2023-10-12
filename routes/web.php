@@ -6,8 +6,13 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\TeachingAssistantController;
 
-// Home route
-Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+Route::get('/main/create', [HomeController::class, 'create'])->name('main.create');
+Route::post('/main', [HomeController::class, 'store'])->name('main.store');
 
 // Classroom routes
 Route::get('/classrooms/create', [ClassroomController::class, 'create'])->name('classrooms.create');
