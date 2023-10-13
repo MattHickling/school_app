@@ -26,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item m-2">
-                            <a class="nav-link btn btn-primary btn-block" href="/">Home</a>
+                            <a class="nav-link btn btn-primary btn-block" href="{{ route('main.create') }}">Plan</a>
                         </li>
                         <li class="nav-item m-2">
                             <a class="nav-link btn btn-success btn-block" href="{{ route('classrooms.create') }}">Add Classroom</a>
@@ -48,7 +48,7 @@
     </div>
 
     <footer class="bg-light text-center py-3">
-        <p>&copy; {{ date('Y') }} Your App Name. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} Shona's app. All rights reserved.</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
