@@ -9,8 +9,8 @@ class TeachingAssistantController extends Controller
 {
     public function index()
     {
-        // Logic for displaying a list of resources
-    }
+        $teachingAssistants = TeachingAssistant::all(); 
+        return view('teaching_assistants.index', compact('teachingAssistants'));    }
     
     public function show($id)
     {

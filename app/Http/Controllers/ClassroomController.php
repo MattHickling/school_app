@@ -9,8 +9,8 @@ class ClassroomController extends Controller
 {
     public function index()
 {
-    // Logic for displaying a list of resources
-}
+    $classrooms = Classroom::all(); 
+    return view('classrooms.index', compact('classrooms'));}
 
 public function show($id)
 {

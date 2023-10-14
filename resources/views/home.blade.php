@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.footer')
 
 @section('content')
 <div class="container">
@@ -14,10 +14,10 @@
                 <div class="col-md-6">
                     <a href="{{ route('teaching-assistants.create') }}" class="btn btn-warning btn-block btn-lg">Add Teaching Assistant</a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-2">
                     <a href="{{ route('classrooms.create') }}" class="btn btn-success btn-block btn-lg">Add Classroom</a>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mt-2">
                     <a href="{{ route('main.create') }}" class="btn btn-primary btn-block btn-lg">Plan</a>
                 </div>
             </div>

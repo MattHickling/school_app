@@ -43,15 +43,31 @@
         </nav>
     </header>
 
-    <div class="container">
-        @yield('content')
+    <div class="wrapper">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="bg-light text-center py-3">
-        <p>&copy; {{ date('Y') }} Shona's app. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} Your App Name. All rights reserved.</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+
+    <style>
+        .wrapper {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex: 1;
+        }
+    </style>
 </html>
