@@ -25,3 +25,4 @@ Route::post('/teachers', [TeacherController::class, 'store'])->name('teachers.st
 // Teaching Assistant routes
 Route::get('/teaching-assistants/create', [TeachingAssistantController::class, 'create'])->name('teaching-assistants.create');
 Route::post('/teaching-assistants', [TeachingAssistantController::class, 'store'])->name('teaching-assistants.store');
+Route::get('/teachers', [TeacherController::class, 'index'])->name('teachers.index');

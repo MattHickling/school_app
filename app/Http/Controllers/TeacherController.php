@@ -38,7 +38,7 @@ class TeacherController extends Controller
 
         Teacher::create($data);
 
-        return redirect()->route('teachers.index')->with('success', 'Teacher created successfully');
+        return redirect()->route('teachers.create')->with('success', 'Teacher created successfully');
 
     }
     
