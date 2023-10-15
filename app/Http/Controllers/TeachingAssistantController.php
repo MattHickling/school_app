@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TeachingAssistant;
 use Illuminate\Support\Facades\View;
 
 class TeachingAssistantController extends Controller

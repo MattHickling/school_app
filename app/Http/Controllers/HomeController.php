@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Classroom;
+use App\Models\TeachingAssistant;
+use App\Models\Teacher;
 
 use Illuminate\View\View;
 use Illuminate\Http\Request;

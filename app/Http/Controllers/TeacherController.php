@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,26 @@ class TeacherController extends Controller
     
     public function create()
     {
-        return view('teachers.create');
-    }
+        $teachers = Teacher::all();
+        return view('teachers.create', compact('teachers'));    }
     
     public function store(Request $request)
+    
     {
-        // Logic for storing a new resource
+        $data = $request->validate([
+            'title' => 'required',
+            'first_name' => 'required',
+            'surname' => 'required',
+            'preference_of_year' => 'required',
+            'strength' => 'required',
+            'ECT' => 'nullable|required',
+            'leadership' => 'required',
+        ]);
+
+        Teacher::create($data);
+
+        return redirect()->route('teachers.index')->with('success', 'Teacher created successfully');
+
     }
     
     public function edit($id)

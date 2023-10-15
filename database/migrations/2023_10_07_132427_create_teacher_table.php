@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); 
-            $table->string('first_name'); 
-            $table->string('surname'); 
-            $table->string('preference_of_year'); 
-            $table->string('strength'); 
-            $table->string('weakness');
-            $table->string('ECT'); 
+            $table->string('title');
+            $table->string('first_name');
+            $table->string('surname');
+            $table->string('preference_of_year');
+            $table->string('strength');
+            $table->boolean('ECT');
             $table->boolean('leadership');
             $table->timestamps();
         });
+        
     }
 
     /**

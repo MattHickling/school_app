@@ -24,10 +24,7 @@
                 <label for="strength">Strength:</label>
                 <input type="text" name="strength" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label for="weakness">Weakness:</label>
-                <input type="text" name="weakness" class="form-control" required>
-            </div>
+            
             <div class="form-group">
                 <label for="higher_ta">Higher TA:</label>
                 <select name="higher_ta" class="form-control" required>

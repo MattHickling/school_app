@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('surname'); 
             $table->string('preference_of_year'); 
             $table->string('strength'); 
-            $table->string('weakness'); 
             $table->boolean('higher_ta'); 
             $table->timestamps();
         });

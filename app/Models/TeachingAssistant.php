@@ -16,7 +16,6 @@ class TeachingAssistant extends Model
         'surname',
         'preference_of_year',
         'strength',
-        'weakness',
         'higher_ta',
     ];
 
@@ -31,7 +30,6 @@ class TeachingAssistant extends Model
                 'surname' => 'required',
                 'preference_of_year' => 'required',
                 'strength' => 'required',
-                'weakness' => 'required',
                 'higher_ta' => 'required|boolean',
             ], [
                 'title.required' => 'The title field is required.',
@@ -39,7 +37,6 @@ class TeachingAssistant extends Model
                 'surname.required' => 'The surname field is required.',
                 'preference_of_year.required' => 'The preference of year field is required.',
                 'strength.required' => 'The strength field is required.',
-                'weakness.required' => 'The weakness field is required.',
                 'higher_ta.required' => 'The higher TA field is required.',
                 'higher_ta.boolean' => 'The higher TA field must be a boolean value.',
             ]);

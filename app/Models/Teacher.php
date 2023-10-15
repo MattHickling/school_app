@@ -16,6 +16,7 @@ class Teacher extends Model
         'surname',
         'preference_of_year',
         'strength',
+        'ECT',
         'leadership'
     ];
 
@@ -30,7 +31,7 @@ class Teacher extends Model
                 'surname' => 'required',
                 'preference_of_year' => 'required',
                 'strength' => 'required',
-                'weakness' => 'required',
+                'ECT',
                 'leadership' => 'required|boolean',
             ], [
                 'title.required' => 'The title field is required.',
