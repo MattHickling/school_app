@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Teacher;
 use Illuminate\View\View;
 use Illuminate\Http\Request;

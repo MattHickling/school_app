@@ -11,7 +11,7 @@ class ClassroomController extends Controller
     public function index()
 {
     $classrooms = Classroom::all(); 
-    return view('classrooms.index', compact('classrooms'));}
+    return view('classrooms.index', compact('classroom'));}
 
 public function show($id)
 {
@@ -20,12 +20,23 @@ public function show($id)
 
 public function create()
 {
-    return view('classrooms.create');
+    $teachers = Classroom::all();
+    return view('classrooms.create', compact('teachers'));
+    
 }
 
 public function store(Request $request)
 {
-    // Logic for storing a new resource
+    $data = $request->validate([
+        'name' => 'required',
+        'age_of_children' => 'required',
+        'number_of_pupils' => 'required',
+       
+    ]);
+
+    Classroom::create($data);
+
+    return redirect()->route('classrooms.create')->with('success', 'Class created successfully');
 }
 
 public function edit($id)
