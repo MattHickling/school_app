@@ -31,7 +31,6 @@ public function store(Request $request)
         'name' => 'required',
         'age_of_children' => 'required',
         'number_of_pupils' => 'required',
-       
     ]);
 
     Classroom::create($data);

@@ -20,12 +20,25 @@ class TeachingAssistantController extends Controller
     
     public function create()
     {
-        return view('teaching_assistants.create');
+        $teaching_assistants = TeachingAssistant::all();
+        return view('teaching_assistants.create')->with('success', 'Class created successfully');
     }
     
+
     public function store(Request $request)
     {
-        // Logic for storing a new resource
+        $data = $request->validate([
+            'title' => 'required',
+            'first_name' => 'required',
+            'surname' => 'required',
+            'preference_of_year' => 'required',
+            'strength' => 'required',
+            'higher_ta' => 'required',
+        ]);
+
+        TeachingAssistant::create($data);
+
+        return redirect()->route('teaching-assistants.create')->with('success', 'Class created successfully');
     }
     
     public function edit($id)
