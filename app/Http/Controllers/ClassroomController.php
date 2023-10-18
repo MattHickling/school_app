@@ -34,6 +34,7 @@ public function store(Request $request)
     ]);
 
     Classroom::create($data);
+    toastr()->success('You have successfully added a classroom!');
 
     return redirect()->route('classrooms.create')->with('success', 'Class created successfully');
 }
