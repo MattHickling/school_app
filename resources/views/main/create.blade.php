@@ -82,12 +82,12 @@
 
     }
    
-    @if(Session::has('toastr'))
-        toastr.options = {
-            "positionClass": "{{ Session::get('toastr')['position'] }}",
-        }
-        toastr["{{ Session::get('toastr')['type'] }}"]("{{ Session::get('toastr')['message'] }}");
-    @endif
+    // @if(Session::has('toastr'))
+    //     toastr.options = {
+    //         "positionClass": "{{ Session::get('toastr')['position'] }}",
+    //     }
+    //     toastr["{{ Session::get('toastr')['type'] }}"]("{{ Session::get('toastr')['message'] }}");
+    // @endif
 
 
 </script>
