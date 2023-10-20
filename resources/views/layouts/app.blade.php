@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="toastr.css" rel="stylesheet"/>
-    <script>
-        @if(Session::has('toastr'))
-            toastr.options = {
-                "positionClass": "{{ Session::get('toastr')['position'] }}",
-            }
-            toastr["{{ Session::get('toastr')['type'] }}"]("{{ Session::get('toastr')['message'] }}");
-        @endif
-    </script>
+    
 </head>
 <body>
 
