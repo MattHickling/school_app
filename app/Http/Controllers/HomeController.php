@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Classroom;
-use App\Models\TeachingAssistant;
 use App\Models\Teacher;
-
+use App\Models\Classroom;
 use Illuminate\View\View;
+
 use Illuminate\Http\Request;
+use App\Models\TeachingAssistant;
+use App\Http\Controllers\HomeController;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,30 @@ class HomeController extends Controller
     {
         // Logic for displaying a list of resources
     }
+
+    public function mainCreate()
+    {
+dd('jhgjug');    }
+
+    public function processSelection(Request $request)
+{
+    // Retrieve the form data from the request
+    $formData = $request->all();
+
+    // Process the data and organize it as needed
+    $selectedClasses = [];
+
+    foreach ($formData['years'] as $year => $numClasses) {
+        $classes = [];
+        for ($i = 1; $i <= $numClasses; $i++) {
+            $classes[] = $formData["year{$year}_class{$i}"];
+        }
+        $selectedClasses[$year] = $classes;
+    }
+
+    // Pass the selected classes to the view
+    return view('selected-classes', compact('selectedClasses'));
+}
     
     public function show($id)
     {

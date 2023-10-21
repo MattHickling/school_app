@@ -2,8 +2,10 @@
 
 @section('content')
 <div class="container">
-    <form id="schoolSelectorForm">
-        <div class="form-group m-5">
+    <h2>Select the Number of Years and Classes</h2>
+    <form method="POST" action="{{ route('classrooms.store') }}">
+        @csrf <!-- Add a CSRF token for form security -->
+        <div class="form-group">
             <label for="years">Select the number of years in the school:</label>
             <select class="form-control" id="years" onchange="generateYearSelectors()">
                 <option value="0">Select...</option>
@@ -13,6 +15,7 @@
             </select>
         </div>
         <div id="yearSelectors"></div>
+        <button type="button" class="btn btn-primary" id="nextButton">Next</button> <!-- Next button -->
     </form>
 </div>
 @endsection
@@ -20,8 +23,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-
-function generateYearSelectors() {
+    function generateYearSelectors() {
         const numberOfYears = parseInt($("#years").val());
         const yearSelectors = $("#yearSelectors");
 
@@ -48,33 +50,4 @@ function generateYearSelectors() {
             `);
         }
     }
-
-    function generateClassSelectors(yearNumber, numberOfClasses) {
-    const classSelectors = $(`#classSelectorsYear${yearNumber}`);
-    classSelectors.empty();
-
-    for (let i = 1; i <= numberOfClasses; i++) {
-        classSelectors.append(`
-            <div class="form-group">
-                <label for="class${yearNumber}-${i}">Select Teacher for Class ${i}:</label>
-                <select class="form-control" id="class${yearNumber}-${i}" name="teacher_id[]">
-                    <option value="">Select...</option>
-                    @foreach ($teachers as $teacher)
-                        <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="ta${yearNumber}-${i}">Select Teaching Assistant for Class ${i}:</label>
-                <select class="form-control" id="ta${yearNumber}-${i}" name="teaching_assistant_id[]">
-                    <option value="">Select...</option>
-                    @foreach ($teachingAssistants as $ta)
-                        <option value="{{ $ta->id }}">{{ $ta->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-        `);
-    }
-}
-   
 </script>
