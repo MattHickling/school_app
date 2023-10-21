@@ -20,12 +20,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    // Simulated data for select boxes (you should fetch data from your database)
-    const teachers = ["Teacher 1", "Teacher 2", "Teacher 3"];
-    const classes = ["Class A", "Class B", "Class C"];
-    const teachingAssistants = ["TA 1", "TA 2", "TA 3"];
 
-    function generateYearSelectors() {
+function generateYearSelectors() {
         const numberOfYears = parseInt($("#years").val());
         const yearSelectors = $("#yearSelectors");
 
@@ -54,40 +50,31 @@
     }
 
     function generateClassSelectors(yearNumber, numberOfClasses) {
-        const classSelectors = $(`#classSelectorsYear${yearNumber}`);
-        classSelectors.empty();
+    const classSelectors = $(`#classSelectorsYear${yearNumber}`);
+    classSelectors.empty();
 
-        for (let i = 1; i <= numberOfClasses; i++) {
-            classSelectors.append(`
-                <div class="form-group">
-                    <label for="class${yearNumber}-${i}">Select Teacher for Class ${i}:</label>
-                    <select class="form-control" id="class${yearNumber}-${i}">
-                        <option value="0">Select...</option>
-                        @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher }}">{{ $teacher }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="ta${yearNumber}-${i}">Select Teaching Assistant for Class ${i}:</label>
-                    <select class="form-control" id="ta${yearNumber}-${i}">
-                        <option value="0">Select...</option>
-                        @foreach ($teachingAssistants as $ta)
-                            <option value="{{ $ta }}">{{ $ta }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            `);
-        }
-
+    for (let i = 1; i <= numberOfClasses; i++) {
+        classSelectors.append(`
+            <div class="form-group">
+                <label for="class${yearNumber}-${i}">Select Teacher for Class ${i}:</label>
+                <select class="form-control" id="class${yearNumber}-${i}" name="teacher_id[]">
+                    <option value="">Select...</option>
+                    @foreach ($teachers as $teacher)
+                        <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ta${yearNumber}-${i}">Select Teaching Assistant for Class ${i}:</label>
+                <select class="form-control" id="ta${yearNumber}-${i}" name="teaching_assistant_id[]">
+                    <option value="">Select...</option>
+                    @foreach ($teachingAssistants as $ta)
+                        <option value="{{ $ta->id }}">{{ $ta->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        `);
     }
+}
    
-    // @if(Session::has('toastr'))
-    //     toastr.options = {
-    //         "positionClass": "{{ Session::get('toastr')['position'] }}",
-    //     }
-    //     toastr["{{ Session::get('toastr')['type'] }}"]("{{ Session::get('toastr')['message'] }}");
-    // @endif
-
-
 </script>

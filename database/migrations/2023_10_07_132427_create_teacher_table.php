@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('strength');
             $table->boolean('ECT');
             $table->boolean('leadership');
+            $table->unsignedBigInteger('assignment_id')->nullable();
+            $table->date('assignment_date')->nullable(); // Date of assignment
+            // Add other teacher-specific fields
             $table->timestamps();
         });
         

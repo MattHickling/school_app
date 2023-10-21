@@ -14,6 +14,8 @@ class Classroom extends Model
         'name',
         'age_of_children',
         'number_of_pupils',
+        'teacher_id',
+        'teaching_assistant_id'
     ];
 
     public static function boot()

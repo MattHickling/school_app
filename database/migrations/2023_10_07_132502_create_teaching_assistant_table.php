@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('teaching_assistants', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('first_name'); 
-            $table->string('surname'); 
-            $table->string('preference_of_year'); 
-            $table->string('strength'); 
-            $table->boolean('higher_ta'); 
+            $table->string('first_name');
+            $table->string('surname');
+            $table->string('preference_of_year');
+            $table->string('strength');
+            $table->boolean('higher_ta');
+            $table->unsignedBigInteger('assignment_id')->nullable();
+            $table->date('assignment_date')->nullable(); // Date of assignment
+            // Add other teaching assistant-specific fields
             $table->timestamps();
         });
     }

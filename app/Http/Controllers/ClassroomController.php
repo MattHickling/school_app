@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Classroom;
+use App\Models\Teacher;
+use App\Models\TeachingAssistant;
+
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -35,18 +38,26 @@ public function store(Request $request)
         'name' => 'required',
         'age_of_children' => 'required',
         'number_of_pupils' => 'required',
-        'teacher_id' => 'required', // Make sure you have a field for teacher_id in your form.
     ]);
 
-    // Check if the provided teacher_id exists in the teachers table before creating a classroom.
-    if (Teacher::where('id', $data['teacher_id'])->exists()) {
+    // Check if 'teacher_id' is present in the data array
+    if (isset($data['teacher_id'])) {
+        // Check if the provided teacher_id exists in the teachers table before creating a classroom.
+        if (Teacher::where('id', $data['teacher_id'])->exists()) {
+            Classroom::create($data);
+            return view('classrooms.create')->with('toastr_message', 'Classroom created successfully');
+        } else {
+            // Handle the case where the teacher_id doesn't exist.
+            return view('classrooms.create')->with('error_message', 'Invalid teacher selected');
+        }
+    } else {
+        // 'teacher_id' is not set, which means it's optional and can be null or empty
         Classroom::create($data);
         return view('classrooms.create')->with('toastr_message', 'Classroom created successfully');
-    } else {
-        // Handle the case where the teacher_id doesn't exist.
-        return view('classrooms.create')->with('error_message', 'Invalid teacher selected');
     }
 }
+
+
 
 
 public function edit($id)
