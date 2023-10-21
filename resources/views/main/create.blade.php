@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h2>Select the Number of Years and Classes</h2>
-    <form method="POST" action="{{ route('classrooms.store') }}">
+    <form method="POST" action="{{ route('select.teachers') }}" id="classroomForm">
         @csrf <!-- Add a CSRF token for form security -->
         <div class="form-group">
             <label for="years">Select the number of years in the school:</label>
@@ -15,7 +15,7 @@
             </select>
         </div>
         <div id="yearSelectors"></div>
-        <button type="button" class="btn btn-primary" id="nextButton">Next</button> <!-- Next button -->
+        <button type="submit" class="btn btn-primary" id="nextButton">Next</button>
     </form>
 </div>
 @endsection

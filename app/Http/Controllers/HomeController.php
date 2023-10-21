@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Teacher;
 use App\Models\Classroom;
+use App\Models\SchoolYear;
+
 use Illuminate\View\View;
 
 use Illuminate\Http\Request;
@@ -18,7 +20,8 @@ class HomeController extends Controller
 
     public function mainCreate()
     {
-dd('jhgjug');    }
+   
+    }
 
     public function processSelection(Request $request)
 {

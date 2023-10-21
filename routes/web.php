@@ -36,3 +36,4 @@ Route::post('/process-selection', [HomeController::class, 'processSelection'])->
 
 Route::get('/main/create', [HomeController::class, 'create'])->name('main.create');
 
+Route::post('/select-teachers', [ClassesController::class, 'selectTeachers'])->name('select.teachers');
