@@ -14,9 +14,17 @@ class Classroom extends Model
         'name',
         'age_of_children',
         'number_of_pupils',
-        'teacher_id',
-        'teaching_assistant_id'
     ];
+
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class, 'teacher_id');
+    }
+
+    public function teachingAssistant()
+    {
+        return $this->belongsTo(TeachingAssistant::class, 'teaching_assistant_id');
+    }
 
     public static function boot()
     {
@@ -27,10 +35,12 @@ class Classroom extends Model
                 'name' => 'required',
                 'age_of_children' => 'required',
                 'number_of_pupils' => 'required',
+                'teacher_id' => 'nullable|exists:teachers,id',
+
             ], [
                 'name.required' => 'The name of the class is required.',
                 'age_of_children.required' => 'The age of children is required.',
-                'number_of_pupils.required' => 'The number_of_pupils field is required.',
+                'number_of_pupils.required' => 'The number_of pupils field is required.',
             ]);
 
             if ($validator->fails()) {
@@ -39,4 +49,5 @@ class Classroom extends Model
         });
     }
 }
+
 

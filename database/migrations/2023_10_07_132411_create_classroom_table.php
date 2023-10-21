@@ -9,14 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('classrooms', function (Blueprint $table) {
-            $table->id();
-            $table->string('name'); 
-            $table->integer('age_of_children'); 
-            $table->integer('number_of_pupils'); 
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('age_of_children');
+            $table->integer('number_of_pupils');
             $table->timestamps();
+
+   
         });
     }
 

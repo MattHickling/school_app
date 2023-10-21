@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('teachers', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('title');
             $table->string('first_name');
             $table->string('surname');
@@ -21,8 +21,7 @@ return new class extends Migration
             $table->boolean('ECT');
             $table->boolean('leadership');
             $table->unsignedBigInteger('assignment_id')->nullable();
-            $table->date('assignment_date')->nullable(); // Date of assignment
-            // Add other teacher-specific fields
+            $table->date('assignment_date')->nullable();
             $table->timestamps();
         });
         
