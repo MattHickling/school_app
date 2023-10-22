@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher; 
+use App\Models\SchoolYear;
+
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
-use App\Models\Teacher; 
-use App\Models\SchoolYear;
+
+
 
 class ClassesController extends Controller
 {
@@ -17,9 +20,9 @@ class ClassesController extends Controller
     }
 
     public function selectTeachers(Request $request)
-{
+        {
     // Assuming you have a model for school years
-    $schoolYears = SchoolYear::all();
+    $years = SchoolYear::all();
 
     // You can fetch the years and classes from your $schoolYears data
     $years = $schoolYears->pluck('years');
@@ -29,16 +32,19 @@ class ClassesController extends Controller
     $teachers = Teacher::all();
 
     return view('classes.create', compact('years', 'numClasses', 'teachers'));
-}
+    }
 
     public function processSelection(Request $request)
     {
-        $academicSettings = AcademicSetting::all(); // Assuming AcademicSetting is your model for the table.
+        $schoolYears = SchoolYear::all(); // Fetch data from the SchoolYear model
 
-// Use the data in your controller
+        // Use the data in your controller
         $selectedClasses = $request->input('selectedClasses');
 
-        return view('classes.create', ['selectedClasses' => $selectedClasses]); // Update to the correct view path
+        return view('classes.create', [
+            'schoolYears' => $schoolYears, // Pass the SchoolYear data to the view
+            'selectedClasses' => $selectedClasses,
+        ]);
     }
 }
 
