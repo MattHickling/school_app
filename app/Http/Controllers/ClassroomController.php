@@ -25,31 +25,25 @@ public function show($id)
 
 public function create()
 {
-    $teachers = Classroom::all();
-
-
+    $teachers = Teacher::all();
     return view('classrooms.create', compact('teachers'));
-    
 }
+
 
 public function store(Request $request)
 {
-    
     $data = $request->validate([
-        'name' => 'required',
+        'name' => 'nullable', // Make 'name' field optional
         'age_of_children' => 'required',
         'number_of_pupils' => 'required',
     ]);
+    $teachers = Teacher::all();
+
+
+    Classroom::create($data);
     
-       
-       
-        Classroom::create($data);
-        return redirect()->route('classrooms.create')->with('toastr_message', 'Classroom created successfully');
-    
+    return redirect()->route('classrooms.create')->with('toastr_message', 'Classroom created successfully');
 }
-
-
-
 
 
 public function edit($id)
