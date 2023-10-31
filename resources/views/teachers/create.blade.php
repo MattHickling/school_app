@@ -35,7 +35,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="surname">Surname:</label>
-                    <input type="text" name="surname" class="form-control">
+                    <input type="text" name "surname" class="form-control">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -63,14 +63,16 @@
                 </div>
             </div>
         </div>
-
+        <div class="col-sm-6">
         <div class="form-group">
             <label for="leadership">Leadership:</label>
-            <select name="leadership" class="form-control" required>
+            <select name="leadership" class="form-control form-control-sm" required>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
         </div>
+    </div>
+
 
         <button type="submit" class="btn btn-primary">Create Teacher</button>
     </form>
