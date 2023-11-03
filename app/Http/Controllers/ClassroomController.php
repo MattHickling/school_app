@@ -17,13 +17,12 @@ class ClassroomController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
             'age_of_children' => 'required',
             'number_of_pupils' => 'required',
         ]);
 
         Classroom::create($data);
 
-        return redirect()->route('classrooms.create')->with('success', 'Classroom created successfully');
+    return redirect()->route('classrooms.create')->with('success', 'Classroom created successfully');
     }
 }

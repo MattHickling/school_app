@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Teacher;
 use App\Models\Classroom;
-use App\Models\SchoolYear;
 
 use Illuminate\View\View;
 
@@ -23,25 +22,7 @@ class HomeController extends Controller
    
     }
 
-    public function processSelection(Request $request)
-{
-    // Retrieve the form data from the request
-    $formData = $request->all();
-
-    // Process the data and organize it as needed
-    $selectedClasses = [];
-
-    foreach ($formData['years'] as $year => $numClasses) {
-        $classes = [];
-        for ($i = 1; $i <= $numClasses; $i++) {
-            $classes[] = $formData["year{$year}_class{$i}"];
-        }
-        $selectedClasses[$year] = $classes;
-    }
-
-    // Pass the selected classes to the view
-    return view('selected-classes', compact('selectedClasses'));
-}
+   
     
     public function show($id)
     {

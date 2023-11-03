@@ -32,7 +32,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label for="first_name">First Name:</label>
-                        <input type="text" name "first_name" class="form-control" required>
+                        <input type="text" name="first_name" class="form-control" required>
                     </div>
                 </div>
             </div>

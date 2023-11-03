@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable(); 
             $table->integer('age_of_children');
             $table->integer('number_of_pupils');
             $table->timestamps();

@@ -11,19 +11,18 @@ class Classroom extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
         'age_of_children',
         'number_of_pupils',
     ];
 
     public function teacher()
     {
-        return $this->belongsTo(Teacher::class, 'teacher_id');
+        // return $this->belongsTo(Teacher::class, 'teacher_id');
     }
 
     public function teachingAssistant()
     {
-        return $this->belongsTo(TeachingAssistant::class, 'teaching_assistant_id');
+        // return $this->belongsTo(TeachingAssistant::class, 'teaching_assistant_id');
     }
 
     public static function boot()
