@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classroom;
-use App\Models\Teacher;
 use Illuminate\Http\Request;
+use App\Classroom;
 
 class ClassroomController extends Controller
 {
+    // Display the form to create a new classroom
     public function create()
     {
-        $teachers = Teacher::all();
-        return view('classrooms.create', compact('teachers'));
+        return view('classrooms.create');
     }
 
+    // Store a new classroom in the database
     public function store(Request $request)
     {
+        // Validate the input data
         $data = $request->validate([
             'age_of_children' => 'required',
-            'number_of_pupils' => 'required',
+            'number_of_pupils' => 'required|integer',
         ]);
 
-        Classroom::create($data);
+        // Create a new classroom
+        $classroom = Classroom::create($data);
 
-    return redirect()->route('classrooms.create')->with('success', 'Classroom created successfully');
+        return redirect()->route('classrooms.create')->with('success', 'Classroom created successfully');
     }
 }

@@ -32,5 +32,4 @@
         </div>
         <button type="submit" class="btn btn-primary">Create Classroom</button>
     </form>
-</div>
 @endsection
