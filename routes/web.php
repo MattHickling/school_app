@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 
+use App\Http\Controllers\SchoolYearsController;
 use App\Http\Controllers\TeachingAssistantController;
 
 
@@ -27,3 +28,7 @@ Route::get('/teaching-assistants/create', [TeachingAssistantController::class, '
 Route::post('/teaching-assistants', [TeachingAssistantController::class, 'store'])->name('teaching-assistants.store');
 
 Route::get('/plan', [TeacherController::class, 'plan'])->name('teacher.plan');
+
+
+Route::get('/school-years/create', [SchoolYearsController::class, 'create'])->name('school_years.create');
+Route::post('/school-years', [SchoolYearsController::class, 'store'])->name('school_years.store');

@@ -18,8 +18,8 @@
                     <a href="{{ route('classrooms.create') }}" class="btn btn-success btn-block btn-lg">Add Classroom</a>
                 </div>
                 <div class="col-md-6 mt-2">
-                    <a href="{{ route('main.create') }}" class="btn btn-primary btn-block btn-lg">Plan</a>
-                </div>
+                    <a href="{{ route('school_years.create') }}" class="btn btn-primary btn-block btn-lg">Create School Years</a>
+                </div>                
             </div>
         </div>
     </div>
