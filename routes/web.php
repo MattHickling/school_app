@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
+
 use App\Http\Controllers\TeachingAssistantController;
 
 
@@ -11,8 +12,10 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-// Classroom routes
+// Display the form to create a new classroom
 Route::get('/classrooms/create', [ClassroomController::class, 'create'])->name('classrooms.create');
+
+// Store a new classroom
 Route::post('/classrooms', [ClassroomController::class, 'store'])->name('classrooms.store');
 
 // Teacher routes
