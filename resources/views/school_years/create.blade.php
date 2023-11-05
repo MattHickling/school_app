@@ -17,6 +17,6 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Create School Years Data</button>
+    <button type="submit" class="btn btn-primary">Add School</button>
 </form>
 @endsection

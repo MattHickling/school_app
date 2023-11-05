@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item m-2">
-                            <a class="nav-link btn btn-primary btn-block" href="{{ route('teacher.plan') }}">Plan</a>
+                            <a class="nav-link btn btn-primary btn-block" href="{{ route('teacher.plan') }}">Add School</a>
                         </li>
                         <li class="nav-item m-2">
                             <a class="nav-link btn btn-success btn-block" href="{{ route('classrooms.create') }}">Add Classroom</a>
