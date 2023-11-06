@@ -25,4 +25,11 @@ class SchoolYearsController extends Controller
 
         return redirect()->route('school_years.create')->with('success', 'School years data created successfully');
     }
+        
+    public function showClasses()
+    {
+        $schoolYears = SchoolYear::all();
+        return view('school_years.show-classes', compact('schoolYears'));
+    }
+
 }
