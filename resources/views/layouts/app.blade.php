@@ -40,6 +40,10 @@
                         <li class="nav-item m-2">
                             <a class="nav-link btn btn-warning btn-block" href="{{ route('teaching-assistants.create') }}">Add Teaching Assistant</a>
                         </li>
+                        <li class="nav-item m-2">
+                            <a class="nav-link btn btn-secondary btn-block" href="{{ route('school_years.show_classes') }}">Show School Year Classes</a>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>

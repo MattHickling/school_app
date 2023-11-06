@@ -28,3 +28,4 @@ Route::post('/school-years', [SchoolYearsController::class, 'store'])->name('sch
 
 // Show classes route (consistency)
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.classes');
+Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.show_classes');

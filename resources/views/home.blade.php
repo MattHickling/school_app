@@ -19,7 +19,10 @@
                 </div>
                 <div class="col-md-6 mt-2">
                     <a href="{{ route('school_years.create') }}" class="btn btn-primary btn-block btn-lg">Add School</a>
-                </div>                
+                </div>
+                <div class="col-md-12 mt-2"> <!-- Add this button -->
+                    <a href="{{ route('school_years.show_classes') }}" class="btn btn-secondary btn-block btn-lg">Show School Year Classes</a>
+                </div>
             </div>
         </div>
     </div>
