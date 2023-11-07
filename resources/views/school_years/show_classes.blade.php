@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>School Years and Classes</h2>
+<h2>School Year and Classes for {{ $schoolYear->number_of_years }}-Year School</h2>
 
-@foreach ($schoolYears as $year)
-    <div class="card">
-        <div class="card-header">{{ $year->number_of_years }}-Year School</div>
-        <div class="card-body">
-            <h3>Classes</h3>
+@foreach ($schoolYear->classes as $class)
+<div class="card">
+    <div class="card-header">Class {{ $class->class_number }}</div>
+    <div class="card-body">
+        <form method="POST" action="{{ route('school_years.show_classes', ['schoolYearId' => $schoolYear->id]) }}">
+            @csrf
             <table class="table">
                 <thead>
                     <tr>
@@ -16,22 +17,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($year->classes as $class)
-                        <tr>
-                            <td>{{ $class->class_number }}</td>
-                            <td>
-                                <select name="teacher_id" class="form-control">
-                                    <option value="">Select a Teacher</option>
-                                    @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                        </tr>
-                    @endforeach
+                    <tr>
+                        <td>{{ $class->class_number }}</td>
+                        <td>
+                            <select name="teacher_id" class="form-control">
+                                <option value="">Select a Teacher</option>
+                                @foreach ($teachers as $teacher)
+                                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
-        </div>
+            <button type="submit" class="btn btn-primary">Assign Teacher</button>
+        </form>
     </div>
+</div>
 @endforeach
+
 @endsection
