@@ -12,4 +12,10 @@ class Classroom extends Model
     protected $table = 'classroom';
 
     protected $fillable = ['age_of_children', 'number_of_pupils'];
+
+    public function schoolYear()
+{
+    return $this->belongsTo(SchoolYear::class);
+}
+
 }
