@@ -27,21 +27,18 @@ class SchoolYearsController extends Controller
         return redirect()->route('school_years.create')->with('success', 'School years data created successfully');
     }
         
-    public function showClasses($schoolYearId)
-{
-    $schoolYear = SchoolYear::find($schoolYearId);
-
-    if (!$schoolYear) {
-        abort(404); // Handle not found
+    public function showClasses()
+    {
+        // Get all school years
+        $schoolYears = SchoolYear::all();
+    
+        // Load classrooms for each school year
+        $schoolYears->load('classrooms');
+    
+        // Get all available teachers (you may have a separate method for this)
+        $teachers = Teacher::all();
+    
+        return view('school_years.show_classes', compact('schoolYears', 'teachers'));
     }
-
-    $schoolYear->load('classrooms');
-
-    // Get all available teachers (you may have a separate method for this)
-    $teachers = Teacher::all();
-
-    return view('school_years.show-classes', compact('schoolYear', 'teachers'));
-}
-
 
 }
