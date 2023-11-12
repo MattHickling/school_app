@@ -30,7 +30,4 @@ Route::post('/school-years', [SchoolYearsController::class, 'store'])->name('sch
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.classes');
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.show_classes');
 
-// Show classes route
-Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])
-    ->name('school_years.show_classes');
 
