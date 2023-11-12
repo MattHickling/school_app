@@ -29,13 +29,10 @@ class SchoolYearsController extends Controller
         
     public function showClasses()
     {
-        // Get all school years
         $schoolYears = SchoolYear::all();
     
-        // Load classrooms for each school year
         $schoolYears->load('classrooms');
     
-        // Get all available teachers (you may have a separate method for this)
         $teachers = Teacher::all();
     
         return view('school_years.show_classes', compact('schoolYears', 'teachers'));
