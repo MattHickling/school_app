@@ -29,13 +29,19 @@ class SchoolYearsController extends Controller
         
     public function showClasses()
     {
+        // Fetch the school year from the database or any other logic
+        $schoolYear = SchoolYear::find(1); // Assuming you have a SchoolYear model and you're fetching it by ID 1
+
         $schoolYears = SchoolYear::all();
-    
         $schoolYears->load('classrooms');
-    
         $teachers = Teacher::all();
-    
-        return view('school_years.show_classes', compact('schoolYears', 'teachers'));
+
+        return view('school_years.show_classes', compact('schoolYear', 'schoolYears', 'teachers'));
+    }
+
+    public function classrooms()
+    {
+        return $this->hasMany(Classroom::class);
     }
 
 }

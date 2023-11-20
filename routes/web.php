@@ -16,11 +16,15 @@ Route::post('/classrooms', [ClassroomController::class, 'store'])->name('classro
 
 Route::get('/teachers/create', [TeacherController::class, 'create'])->name('teachers.create');
 Route::post('/teachers', [TeacherController::class, 'store'])->name('teachers.store');
+Route::get('/teacher/plan', [TeacherController::class, 'plan'])->name('teacher.plan');
+
 
 Route::get('/teaching-assistants/create', [TeachingAssistantController::class, 'create'])->name('teaching-assistants.create');
 Route::post('/teaching-assistants', [TeachingAssistantController::class, 'store'])->name('teaching-assistants.store');
 
-Route::get('/plan', [TeacherController::class, 'plan'])->name('teacher.plan');
+// Route::get('/plan', [TeacherController::class, 'plan'])->name('teacher.plan');
+// Route::get('/plan', [TeacherController::class, 'create'])->name('teacher.plan');
+// 
 
 // School Years routes
 Route::get('/school-years/create', [SchoolYearsController::class, 'create'])->name('school_years.create');
@@ -29,5 +33,7 @@ Route::post('/school-years', [SchoolYearsController::class, 'store'])->name('sch
 // Show classes route (consistency)
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.classes');
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.show_classes');
+Route::get('/school-years/{schoolYearId}/classes', [SchoolYearsController::class, 'showClasses'])
+    ->name('school_years.show_classes');
 
 
