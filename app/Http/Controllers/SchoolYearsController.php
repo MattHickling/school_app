@@ -30,13 +30,20 @@ class SchoolYearsController extends Controller
     public function showClasses()
     {
         // Fetch the school year from the database or any other logic
-        $schoolYear = SchoolYear::find(1); // Assuming you have a SchoolYear model and you're fetching it by ID 1
-
-        $schoolYears = SchoolYear::all();
-        $schoolYears->load('classrooms');
         $teachers = Teacher::all();
+        $schoolYears = SchoolYear::all();
 
-        return view('school_years.show_classes', compact('schoolYear', 'schoolYears', 'teachers'));
+        $teacherNames = $teachers->map(function ($teacher) {
+            return $teacher->first_name . ' ' . $teacher->surname;
+        });
+
+        $classes = $schoolYears->map(function ($class) {
+            return $class;
+            dd($class);
+        });
+
+        return view('school_years.show_classes', compact('schoolYears', 'teacherNames'))
+            ->with('success', 'School created successfully');
     }
 
     public function classrooms()

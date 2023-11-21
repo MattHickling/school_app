@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item mx-2 flex-fill">
-                            <a class="nav-link btn btn-primary btn-block btn-equal-size text-white" href="{{ route('teachers.create') }}">Add School</a>
+                            <a class="nav-link btn btn-primary btn-block btn-equal-size text-white" href="{{ route('school_years.create') }}">Add School</a>
                         </li>
                         <li class="nav-item mx-2 flex-fill">
                             <a class="nav-link btn btn-success btn-block btn-equal-size text-white" href="{{ route('classrooms.create') }}">Add Classroom</a>
@@ -41,7 +41,7 @@
                             <a class="nav-link btn btn-warning btn-block btn-equal-size text-white" href="{{ route('teaching-assistants.create') }}">Add Teaching Assistant</a>
                         </li>
                         <li class="nav-item mx-2 flex-fill">
-                            <a class="nav-link btn btn-secondary btn-block btn-equal-size text-white" href="{{ route('school_years.show_classes', ['schoolYearId' => optional($schoolYear)->id]) }}">Show School Year Classes</a>
+                            <a class="nav-link btn btn-secondary btn-block btn-equal-size text-white" href="{{ route('school_years.show_classes') }}">Show School Year Classes</a>
                         </li>
                         
                     </ul>
