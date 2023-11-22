@@ -30,6 +30,11 @@
             <label for="number_of_pupils">Number of Pupils:</label>
             <input type="number" name="number_of_pupils" class="form-control" required>
         </div>
+        <div class="form-group">
+            <label for="class_name">Class Name:</label> <!-- Fixed label for class_name -->
+            <input type="text" name="class_name" class="form-control" required>
+        </div>
         <button type="submit" class="btn btn-primary">Create Classroom</button>
     </form>
+</div>
 @endsection

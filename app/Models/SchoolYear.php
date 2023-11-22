@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SchoolYear extends Model
 {
-    protected $fillable = ['number_of_years', 'classes_per_year'];
+    protected $fillable = ['age_of_children', 'number_of_pupils', 'class_name'];
 
     public function classrooms()
 {

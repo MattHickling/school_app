@@ -20,6 +20,7 @@ class SchoolYearsController extends Controller
         $data = $request->validate([
             'number_of_years' => 'required|integer',
             'classes_per_year' => 'required|integer',
+            'class_name' => 'required'
         ]);
 
         SchoolYear::create($data);
@@ -31,18 +32,18 @@ class SchoolYearsController extends Controller
     {
         // Fetch the school year from the database or any other logic
         $teachers = Teacher::all();
-        $schoolYears = SchoolYear::all();
+        $schoolYears = SchoolYear::with('classrooms')->get(); // Load the classrooms relationship
 
         $teacherNames = $teachers->map(function ($teacher) {
             return $teacher->first_name . ' ' . $teacher->surname;
         });
 
-        $classes = $schoolYears->map(function ($class) {
-            return $class;
-            dd($class);
+        // Extract classes from each school year
+        $classes = $schoolYears->flatMap(function ($schoolYear) {
+            return $schoolYear->classrooms->pluck('age_of_children', 'id');
         });
 
-        return view('school_years.show_classes', compact('schoolYears', 'teacherNames'))
+        return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'classes'))
             ->with('success', 'School created successfully');
     }
 

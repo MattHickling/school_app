@@ -20,6 +20,7 @@ class ClassroomController extends Controller
         $data = $request->validate([
             'age_of_children' => 'required',
             'number_of_pupils' => 'required|integer',
+            'class_name' => 'required',
         ]);
 
         // Create a new classroom
