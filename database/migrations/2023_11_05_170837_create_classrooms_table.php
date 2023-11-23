@@ -6,13 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateClassroomsTable extends Migration
 {
-    public function up()
+        public function up()
     {
         Schema::create('classroom', function (Blueprint $table) {
             $table->id();
             $table->string('age_of_children');
             $table->integer('number_of_pupils');
-            $table->integer('class_name');
+            $table->string('class_name'); // Change the data type to string
             $table->timestamps();
         });
     }

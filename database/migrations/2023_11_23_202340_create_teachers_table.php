@@ -11,14 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teaching_assistants', function (Blueprint $table) {
+        Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('first_name');
-            $table->string('surname');
-            $table->string('preference_of_year');
-            $table->string('strength');
-            $table->boolean('higher_ta');
             $table->timestamps();
         });
     }
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teaching_assistants');
+        Schema::dropIfExists('teachers');
     }
 };

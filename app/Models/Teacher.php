@@ -17,7 +17,8 @@ class Teacher extends Model
         'preference_of_year',
         'strength',
         'ECT',
-        'leadership'
+        'leadership',
+        'teaching_assistant_id',
     ];
 
     public static function boot()
@@ -46,5 +47,10 @@ class Teacher extends Model
                 throw new \Exception('Validation failed: ' . implode('; ', $validator->errors()->all()));
             }
         });
+    }
+    
+    public function teachingAssistant()
+    {
+        return $this->belongsTo(TeachingAssistant::class);
     }
 }
