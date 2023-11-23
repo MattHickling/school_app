@@ -4,12 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateTeachersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -20,18 +17,12 @@ return new class extends Migration
             $table->string('strength');
             $table->boolean('ECT');
             $table->boolean('leadership');
-            $table->unsignedBigInteger('assignment_id')->nullable();
-            $table->date('assignment_date')->nullable();
             $table->timestamps();
         });
-        
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('teachers');
     }
-};
+}

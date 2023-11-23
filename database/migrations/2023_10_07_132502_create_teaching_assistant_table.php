@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('preference_of_year');
             $table->string('strength');
             $table->boolean('higher_ta');
-            $table->unsignedBigInteger('assignment_id')->nullable();
-            $table->date('assignment_date')->nullable();
+            // $table->unsignedBigInteger('assignment_id')->nullable();
+            // $table->date('assignment_date')->nullable();
             $table->timestamps();
         });
     }
