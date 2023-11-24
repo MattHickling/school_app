@@ -34,7 +34,7 @@ class TeacherController extends Controller
             'surname' => 'required',
             'preference_of_year' => 'required',
             'strength' => 'required',
-            'ECT' => 'nullable|required',
+            'ECT' => 'nullable',
             'leadership' => 'required',
         ]);
 

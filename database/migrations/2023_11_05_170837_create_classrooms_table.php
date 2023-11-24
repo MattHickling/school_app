@@ -12,7 +12,7 @@ class CreateClassroomsTable extends Migration
             $table->id();
             $table->string('age_of_children');
             $table->integer('number_of_pupils');
-            $table->string('class_name'); // Change the data type to string
+            $table->string('class_name')->nullable();            
             $table->timestamps();
         });
     }
