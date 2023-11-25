@@ -1,18 +1,22 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Illuminate\Database\Eloquent\Model;
 
 class SchoolYear extends Model
 {
-    protected $fillable = ['age_of_children', 'number_of_pupils', 'class_name'];
+    use HasFactory;
+
+    protected $factory = SchoolYearFactory::class;
+
+    protected $fillable = ['number_of_years', 'classes_per_year'];
 
     public function classrooms()
-{
-    return $this->hasMany(Classroom::class);
+    {
+        return $this->hasMany(Classroom::class);
+    }
 }
 
-
-}
 

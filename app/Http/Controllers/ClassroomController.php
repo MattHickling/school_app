@@ -13,17 +13,16 @@ class ClassroomController extends Controller
         return view('classrooms.create');
     }
 
-    // Store a new classroom in the database
     public function store(Request $request)
     {
-        // Validate the input data
         $data = $request->validate([
             'age_of_children' => 'required',
             'number_of_pupils' => 'required|integer',
             'class_name' => 'required',
+            'school_year_id' => 'exists:school_years,id', 
         ]);
 
-        // Create a new classroom
+       
         $classroom = Classroom::create($data);
 
         return redirect()->route('classrooms.create')->with('success', 'Classroom created successfully');

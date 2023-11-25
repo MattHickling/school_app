@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Teacher;
 
+use App\Models\Teacher;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 
 class SchoolYearsController extends Controller
 {
@@ -20,25 +19,22 @@ class SchoolYearsController extends Controller
         $data = $request->validate([
             'number_of_years' => 'required|integer',
             'classes_per_year' => 'required|integer',
-            'class_name' => 'required'
         ]);
 
         SchoolYear::create($data);
 
         return redirect()->route('school_years.create')->with('success', 'School years data created successfully');
     }
-        
+
     public function showClasses()
     {
-        // Fetch the school year from the database or any other logic
         $teachers = Teacher::all();
-        $schoolYears = SchoolYear::with('classrooms')->get(); // Load the classrooms relationship
+        $schoolYears = SchoolYear::with('classrooms')->get();
 
         $teacherNames = $teachers->map(function ($teacher) {
             return $teacher->first_name . ' ' . $teacher->surname;
         });
 
-        // Extract classes from each school year
         $classes = $schoolYears->flatMap(function ($schoolYear) {
             return $schoolYear->classrooms->pluck('age_of_children', 'id');
         });
@@ -46,10 +42,4 @@ class SchoolYearsController extends Controller
         return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'classes'))
             ->with('success', 'School created successfully');
     }
-
-    public function classrooms()
-    {
-        return $this->hasMany(Classroom::class);
-    }
-
 }

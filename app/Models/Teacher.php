@@ -32,7 +32,7 @@ class Teacher extends Model
                 'surname' => 'required',
                 'preference_of_year' => 'required',
                 'strength' => 'required',
-                'ECT',
+                'ECT' => 'nullable',
                 'leadership' => 'required|boolean',
             ], [
                 'title.required' => 'The title field is required.',
@@ -48,9 +48,10 @@ class Teacher extends Model
             }
         });
     }
-    
+
     public function teachingAssistant()
     {
         return $this->belongsTo(TeachingAssistant::class);
     }
 }
+

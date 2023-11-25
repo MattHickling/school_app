@@ -9,13 +9,10 @@ class Classroom extends Model
 {
     use HasFactory;
 
-    protected $table = 'classroom';
-
-    protected $fillable = ['age_of_children', 'number_of_pupils'];
+    protected $fillable = ['age_of_children', 'number_of_pupils', 'class_name', 'school_year_id'];
 
     public function schoolYear()
-{
-    return $this->belongsTo(SchoolYear::class);
-}
-
+    {
+        return $this->belongsTo(SchoolYear::class);
+    }
 }

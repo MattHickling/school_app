@@ -47,8 +47,10 @@ class TeachingAssistant extends Model
             }
         });
     }
+
     public function teacher()
     {
         return $this->hasOne(Teacher::class);
     }
+    
 }
