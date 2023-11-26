@@ -16,6 +16,8 @@ class SchoolYearFactory extends Factory
         return [
             'number_of_years' => $this->faker->numberBetween(1, 10),
             'classes_per_year' => $this->faker->numberBetween(5, 20),
+            'school_name' => $this->faker->word,
+
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\TeachingAssistant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

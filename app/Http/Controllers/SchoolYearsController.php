@@ -19,6 +19,7 @@ class SchoolYearsController extends Controller
         $data = $request->validate([
             'number_of_years' => 'required|integer',
             'classes_per_year' => 'required|integer',
+            'school_name' => 'required',
         ]);
 
         SchoolYear::create($data);
