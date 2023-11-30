@@ -43,4 +43,13 @@ class SchoolYearsController extends Controller
         return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'classes'))
             ->with('success', 'School created successfully');
     }
+
+    public function getNumberOfClasses($schoolYear, $classId)
+    {
+        $numberOfClasses = SchoolYear::where('school_year', $schoolYear)
+                                        ->where('class_id', $classId)
+                                        ->count();
+
+        return response()->json(['numberOfClasses' => $numberOfClasses]);
+    }
 }

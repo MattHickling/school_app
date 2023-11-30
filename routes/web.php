@@ -35,4 +35,5 @@ Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.show_classes');
 
 
+Route::get('/get-number-of-classes/{schoolYear}/{classId}', [SchoolYearsController::class, 'getNumberOfClasses']);
 
