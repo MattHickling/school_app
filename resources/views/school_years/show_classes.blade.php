@@ -8,14 +8,13 @@
             <div class="card-header">
                 <h2>School Year</h2>
             </div>
-
             <div class="card-body">
                 <h3>Schools</h3>
                 <div class="form-row mb-3">
                     <div class="col-md-6">
                         <label for="schoolSelect">Select School:</label>
                         <select id="schoolSelect" name="school_id" class="form-control">
-                            @foreach ($schools as $schoolId => $schoolName)
+                            @foreach ($school as $schoolId => $schoolName)
                                 <option value="{{ $schoolId }}">{{ $schoolName }}</option>
                             @endforeach
                         </select>
