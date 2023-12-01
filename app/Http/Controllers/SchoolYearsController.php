@@ -31,17 +31,34 @@ class SchoolYearsController extends Controller
     {
         $teachers = Teacher::all();
         $schoolYears = SchoolYear::with('classrooms')->get();
-
+    
+        // Initialize an empty array to store school names
+        $schoolNames = [];
+    
+        foreach ($schoolYears as $schoolYear) {
+            // Access the school name from each SchoolYear instance
+            $schoolNames[] = $schoolYear->school_name;
+        }
+    
+        // Assuming you only want the first school name, you can use the first() method
+        $school = $schoolNames[0] ?? null;
+    
         $teacherNames = $teachers->map(function ($teacher) {
             return $teacher->first_name . ' ' . $teacher->surname;
         });
-
+    
         $classes = $schoolYears->flatMap(function ($schoolYear) {
             return $schoolYear->classrooms->pluck('age_of_children', 'id');
         });
-
-        return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'classes'))
-            ->with('success', 'School created successfully');
+    
+        // Check if $school is null before passing it to the view
+        if ($school) {
+            return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'classes', 'school'))
+                ->with('success', 'School created successfully');
+        } else {
+            return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'classes'))
+                ->with('warning', 'No school found');
+        }
     }
 
     public function getNumberOfClasses($schoolYear, $classId)
