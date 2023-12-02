@@ -30,10 +30,10 @@ class SchoolYearsController extends Controller
     public function showClasses()
     {
         $teachers = Teacher::all();
-        $schoolYears = SchoolYear::get('school_name')->all();
-        dd($schoolYears);
-        $school = $schoolYears->school_name;
-        // dd($schoolYears, $this->customValues['school']);
+        $schoolYears = SchoolYear::with('classrooms')->get();
+
+        $schoolNames = SchoolYear::distinct('school_name')->pluck('school_name', 'id')->toArray();
+
         $teacherNames = $teachers->map(function ($teacher) {
             return $teacher->first_name . ' ' . $teacher->surname;
         });
@@ -42,8 +42,8 @@ class SchoolYearsController extends Controller
             return $schoolYear->classrooms->pluck('age_of_children', 'id');
         });
 
-        return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'classes', 'school'))
-            ->with('success', 'School created successfully');
+        return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'schoolNames', 'classes'))
+            ->with('success', 'Schools and classes loaded successfully');
     }
 
     public function getNumberOfClasses($schoolYear, $classId)
