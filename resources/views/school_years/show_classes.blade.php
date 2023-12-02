@@ -14,13 +14,12 @@
                     <div class="col-md-6">
                         <label for="schoolSelect">Select School:</label>
                         <select id="schoolSelect" name="school_id" class="form-control">
-                            @foreach ($school as $schoolId => $schoolName)
+                            @foreach ($schoolNames as $schoolId => $schoolName)
                                 <option value="{{ $schoolId }}">{{ $schoolName }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div>                                      
                 </div>
-
                 <h3>Classes</h3>
                 <div class="form-row mb-3">
                     <div class="col-md-6">
