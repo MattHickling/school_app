@@ -109,6 +109,26 @@
                 });
             }
         });
+        $(document).ready(function () {
+    $('#schoolSelect, #classSelect, #teacherSelect').change(function () {
+        var selectedSchool = $('#schoolSelect').val();
+        var selectedClass = $('#classSelect').val();
+        var selectedTeacher = $('#teacherSelect').val();
+
+        function getNumberOfClasses(selectedSchool, selectedClass, callback) {
+            $.ajax({
+                type: 'GET',
+                url: '/get-number-of-classes/' + selectedSchool + '/' + selectedClass,
+                success: function (response) {
+                    callback(response.numberOfYears, response.numberOfClasses);
+                },
+                error: function (error) {
+                    console.error('Error fetching number of classes:', error);
+                }
+            });
+        }
+    });
+
 
     </script>
 @endsection

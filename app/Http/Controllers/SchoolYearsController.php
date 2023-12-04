@@ -46,12 +46,18 @@ class SchoolYearsController extends Controller
             ->with('success', 'Schools and classes loaded successfully');
     }
 
-    public function getNumberOfClasses($schoolYear, $classId)
+    public function getNumberOfClasses($schoolId)
     {
-        $numberOfClasses = SchoolYear::where('school_year', $schoolYear)
-                                        ->where('class_id', $classId)
-                                        ->count();
+        $school = SchoolYear::find($schoolId);
+        
+        if (!$school) {
+            return response()->json(['error' => 'School not found']);
+        }
 
-        return response()->json(['numberOfClasses' => $numberOfClasses]);
+        $numberOfYears = $school->number_of_years;
+        $numberOfClasses = $school->classes_per_year;
+
+        return response()->json(['numberOfYears' => $numberOfYears, 'numberOfClasses' => $numberOfClasses]);
     }
+
 }
