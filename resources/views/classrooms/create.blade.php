@@ -22,19 +22,28 @@
 
     <form method="POST" action="{{ route('classrooms.store') }}">
         @csrf
-        <div class="form-group">
-            <label for="age_of_children">Age of Children:</label>
-            <input type="text" name="age_of_children" class="form-control" required>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="age_of_children">Age of Children:</label>
+                    <input type="text" name="age_of_children" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="number_of_pupils">Number of Pupils:</label>
+                    <input type="number" name="number_of_pupils" class="form-control" required>
+                </div>
+            </div>
         </div>
+        
         <div class="form-group">
-            <label for="number_of_pupils">Number of Pupils:</label>
-            <input type="number" name="number_of_pupils" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="class_name">Class Name:</label> <!-- Fixed label for class_name -->
+            <label for="class_name">Class Name:</label>
             <input type="text" name="class_name" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary">Create Classroom</button>
     </form>
+    
+    
 </div>
 @endsection
