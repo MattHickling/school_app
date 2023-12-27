@@ -6,6 +6,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\SchoolYearsController;
 use App\Http\Controllers\TeachingAssistantController;
+use App\Http\Livewire\SchoolYearsShowClasses;
 
 Route::get('/', function () {
     return view('home');
@@ -22,10 +23,6 @@ Route::get('/teacher/plan', [TeacherController::class, 'plan'])->name('teacher.p
 Route::get('/teaching-assistants/create', [TeachingAssistantController::class, 'create'])->name('teaching-assistants.create');
 Route::post('/teaching-assistants', [TeachingAssistantController::class, 'store'])->name('teaching-assistants.store');
 
-// Route::get('/plan', [TeacherController::class, 'plan'])->name('teacher.plan');
-// Route::get('/plan', [TeacherController::class, 'create'])->name('teacher.plan');
-// 
-
 // School Years routes
 Route::get('/school-years/create', [SchoolYearsController::class, 'create'])->name('school_years.create');
 Route::post('/school-years', [SchoolYearsController::class, 'store'])->name('school_years.store');
@@ -34,6 +31,4 @@ Route::post('/school-years', [SchoolYearsController::class, 'store'])->name('sch
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.classes');
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.show_classes');
 
-
-Route::get('/get-number-of-classes/{schoolYear}/{classId}', [SchoolYearsController::class, 'getNumberOfClasses']);
-
+// Route::get('/get-number-of-classes/{schoolYear}/{classId}', [SchoolYearsController::class, 'getNumberOfClasses']);
