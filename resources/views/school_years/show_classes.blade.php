@@ -17,7 +17,6 @@
                 </select>
                 
                 <div id="classSelection">
-                    <!-- Classes per year will be populated dynamically based on school selection -->
                 </div>
             </div>
         </div>
