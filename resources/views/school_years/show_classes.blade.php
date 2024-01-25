@@ -6,56 +6,19 @@
 
         <div class="card mb-4">
             <div class="card-header">
-                <h2>School Year</h2>
+                <h2>School Years and Classes</h2>
             </div>
             <div class="card-body">
-                <h3>Schools</h3>
-                <div class="form-row mb-3">
-                    <div class="col-md-6">
-                        <label for="schoolSelect">Select School:</label>
-                        <select id="schoolSelect" name="school_id" class="form-control">
-                            @foreach ($schoolNames as $schoolId => $schoolName)
-                                <option value="{{ $schoolId }}">{{ $schoolName }}</option>
-                            @endforeach
-                        </select>
-                    </div>                                      
+                <select id="schoolSelect" class="form-control">
+                    <option value="">Select School:</option>
+                    @foreach ($schoolYears as $year)
+                        <option value="{{ $year->school_name }}" data-years="{{ $year->number_of_years }}" data-classes="{{ $year->classes_per_year }}">{{ $year->school_name }}</option>
+                    @endforeach
+                </select>
+                
+                <div id="classSelection">
+                    <!-- Classes per year will be populated dynamically based on school selection -->
                 </div>
-                <h3>Classes</h3>
-                <div class="form-row mb-3">
-                    <div class="col-md-6">
-                        <label for="classSelect">Select Class:</label>
-                        <select id="classSelect" name="class_id" class="form-control">
-                            @foreach ($classes as $classId => $className)
-                                <option value="{{ $classId }}">{{ $className }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label for="teacherSelect">Select Teacher:</label>
-                        <select id="teacherSelect" class="form-control">
-                            @foreach ($teacherNames as $teacherName)
-                                <option>{{ $teacherName }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Class</th>
-                            <th scope="col">Teacher</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td id="selectedClass">Selected Class</td>
-                            <td id="selectedTeacher">Selected Teacher</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
@@ -65,70 +28,19 @@
         $(document).ready(function () {
             $('#schoolSelect').change(function () {
                 var selectedSchool = $(this).val();
-                var selectedClass = $('#classSelect').val();
-                var selectedTeacher = $('#teacherSelect').val();
+                var numberOfYears = $('option:selected', this).data('years');
+                var classesPerYear = $('option:selected', this).data('classes');
 
-                getNumberOfClasses(selectedSchool, selectedClass, function (numberOfClasses) {
-                    $('#selectedClass').text('Selected Class: ' + numberOfClasses);
-                    $('#selectedTeacher').text('Selected Teacher: ' + selectedTeacher);
-                });
-            });
+                $('#classSelection').empty();
 
-            $('#classSelect').change(function () {
-                var selectedSchool = $('#schoolSelect').val();
-                var selectedClass = $(this).val();
-                var selectedTeacher = $('#teacherSelect').val();
-
-                getNumberOfClasses(selectedSchool, selectedClass, function (numberOfClasses) {
-                    $('#selectedClass').text('Selected Class: ' + numberOfClasses);
-                    $('#selectedTeacher').text('Selected Teacher: ' + selectedTeacher);
-                });
-            });
-
-            $('#teacherSelect').change(function () {
-                var selectedSchool = $('#schoolSelect').val();
-                var selectedClass = $('#classSelect').val();
-                var selectedTeacher = $(this).val();
-
-                getNumberOfClasses(selectedSchool, selectedClass, function (numberOfClasses) {
-                    $('#selectedClass').text('Selected Class: ' + numberOfClasses);
-                    $('#selectedTeacher').text('Selected Teacher: ' + selectedTeacher);
-                });
-            });
-
-            function getNumberOfClasses(selectedSchool, selectedClass, callback) {
-                $.ajax({
-                    type: 'GET',
-                    url: '/get-number-of-classes/' + selectedSchool + '/' + selectedClass,
-                    success: function (response) {
-                        callback(response.numberOfClasses);
-                    },
-                    error: function (error) {
-                        console.error('Error fetching number of classes:', error);
+                for (var i = 1; i <= numberOfYears; i++) {
+                    $('#classSelection').append('<div class="mb-4"><h3>' + selectedSchool + ' - Year ' + i + '</h3></div>');
+                    
+                    for (var j = 1; j <= classesPerYear; j++) {
+                        $('#classSelection').append('<div class="form-row mb-3"><div class="col-md-6"><label for="classSelectYear' + i + '">Select Class for Year ' + i + ':</label><select id="classSelectYear' + i + '" name="class_id" class="form-control"><option value="">Select Class</option></select></div></div>');
                     }
-                });
-            }
-        });
-        $(document).ready(function () {
-    $('#schoolSelect, #classSelect, #teacherSelect').change(function () {
-        var selectedSchool = $('#schoolSelect').val();
-        var selectedClass = $('#classSelect').val();
-        var selectedTeacher = $('#teacherSelect').val();
-
-        function getNumberOfClasses(selectedSchool, selectedClass, callback) {
-            $.ajax({
-                type: 'GET',
-                url: '/get-number-of-classes/' + selectedSchool + '/' + selectedClass,
-                success: function (response) {
-                    callback(response.numberOfYears, response.numberOfClasses);
-                },
-                error: function (error) {
-                    console.error('Error fetching number of classes:', error);
                 }
             });
-        }
-    });
-
-
+        });
     </script>
 @endsection
