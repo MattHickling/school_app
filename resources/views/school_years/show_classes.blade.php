@@ -16,7 +16,7 @@
                     @endforeach
                 </select>
                 
-                {{-- <div id="classSelection"> --}}
+                <div id="classSelection">
                 </div>
             </div>
         </div>
