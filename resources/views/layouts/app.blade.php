@@ -62,7 +62,7 @@
     </div>
 
     <footer class="bg-light text-center py-3">
-        <p>&copy; {{ date('Y') }} Your App Name. All rights reserved.</p>
+        <p>&copy; {{ date('Y') }} School App. All rights reserved.</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
