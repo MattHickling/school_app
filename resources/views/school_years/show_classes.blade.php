@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-5">
         <h1 class="mb-4">All School Years and Classes</h1>
 
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header bg-primary text-white">
                 <h2>School Years and Classes</h2>
             </div>
             <div class="card-body">
-                <select id="schoolSelect" class="form-control">
+                <select id="schoolSelect" class="form-control mb-4">
                     <option value="">Select School:</option>
                     @foreach ($schoolYears as $year)
                         <option value="{{ $year->school_name }}" data-years="{{ $year->number_of_years }}" data-classes="{{ $year->classes_per_year }}">{{ $year->school_name }}</option>
