@@ -19,7 +19,11 @@ class TeacherFactory extends Factory
             'strength' => $this->faker->word,
             'ECT' => $this->faker->word,
             'leadership' => $this->faker->boolean,
-            'teaching_assistant_id' => \App\Models\TeachingAssistant::factory(),
+            'teaching_assistant_id' => \App\Models\TeachingAssistant::factory()->create()->id,
+            'school_year_id' => \App\Models\SchoolYear::factory()->create()->id,
+            'classroom_id' => \App\Models\Classroom::factory()->create()->id,
+
+
         ];
     }
 }

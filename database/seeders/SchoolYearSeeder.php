@@ -12,7 +12,7 @@ class SchoolYearSeeder extends Seeder
 {
     public function run()
     {
-        SchoolYear::factory(5)->create();
+        SchoolYear::factory(20)->create();
     }
 }
 

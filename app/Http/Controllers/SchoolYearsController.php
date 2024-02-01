@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\Classroom;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -41,7 +42,6 @@ class SchoolYearsController extends Controller
         $classes = $schoolYears->flatMap(function ($schoolYear) {
             return $schoolYear->classrooms->pluck('age_of_children', 'id');
         });
-
         return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'schoolNames', 'classes'))
             ->with('success', 'Schools and classes loaded successfully');
     }

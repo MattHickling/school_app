@@ -9,7 +9,7 @@ class TeachingAssistantSeeder extends Seeder
 {
     public function run()
     {
-        \App\Models\TeachingAssistant::factory(5)->create();
+        \App\Models\TeachingAssistant::factory(40)->create();
     }
 }
 

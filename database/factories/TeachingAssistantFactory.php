@@ -19,7 +19,8 @@ class TeachingAssistantFactory extends Factory
             'preference_of_year' => $this->faker->word,
             'strength' => $this->faker->word,
             'higher_ta' => $this->faker->boolean,
-            'teacher_id' => \App\Models\Teacher::factory(),
+            'school_id' => \App\Models\SchoolYear::factory()->create()->id,
+
         ];
     }
 }

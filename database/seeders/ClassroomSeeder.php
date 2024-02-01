@@ -9,7 +9,7 @@ class ClassroomSeeder extends Seeder
 {
     public function run()
     {
-        \App\Models\Classroom::factory(10)->create();
+        \App\Models\Classroom::factory(20)->create();
     }
 }
 

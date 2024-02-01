@@ -12,8 +12,8 @@ class SchoolYearFactory extends Factory
     public function definition()
     {
         return [
-            'number_of_years' => $this->faker->numberBetween(1, 10),
-            'classes_per_year' => $this->faker->numberBetween(5, 20),
+            'number_of_years' => $this->faker->numberBetween(1, 6),
+            'classes_per_year' => $this->faker->numberBetween(1, 4),
             'school_name' => $this->faker->word,
 
         ];

@@ -15,7 +15,8 @@ class ClassroomFactory extends Factory
             'age_of_children' => $this->faker->word,
             'number_of_pupils' => $this->faker->numberBetween(20, 40),
             'class_name' => $this->faker->word,
-            'school_year_id' => \App\Models\SchoolYear::factory(),
+            'school_year_id' => \App\Models\SchoolYear::factory()->create()->id,
         ];
     }
+
 }
