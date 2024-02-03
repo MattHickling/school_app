@@ -18,6 +18,11 @@ class SchoolYear extends Model
     {
         return $this->hasMany(Classroom::class);
     }
+
+    public function teachers()
+    {
+        return $this->belongsToMany(Teacher::class);
+    }
 }
 
 

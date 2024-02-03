@@ -30,21 +30,29 @@ class SchoolYearsController extends Controller
 
     public function showClasses()
     {
-        $teachers = Teacher::all();
-        $schoolYears = SchoolYear::with('classrooms')->get();
+        // Retrieve all school years
+        $schoolYears = SchoolYear::all();
 
-        $schoolNames = SchoolYear::distinct('school_name')->pluck('school_name', 'id')->toArray();
+        $data = [];
 
-        $teacherNames = $teachers->map(function ($teacher) {
-            return $teacher->first_name . ' ' . $teacher->surname;
-        });
+        foreach ($schoolYears as $schoolYear) {
+            // Retrieve teachers associated with the current school year
+            $teachers = Teacher::where('school_year_id', $schoolYear->id)->get();
+            
+            // Retrieve classrooms associated with the current school year and count them
+            $numberOfClassrooms = Classroom::where('school_year_id', $schoolYear->id)->count();
 
-        $classes = $schoolYears->flatMap(function ($schoolYear) {
-            return $schoolYear->classrooms->pluck('age_of_children', 'id');
-        });
-        return view('school_years.show_classes', compact('schoolYears', 'teacherNames', 'schoolNames', 'classes'))
-            ->with('success', 'Schools and classes loaded successfully');
+            $data[$schoolYear->school_name] = [
+                'teachers' => $teachers->pluck('first_name', 'id')->toArray(),
+                'numberOfClassrooms' => $numberOfClassrooms,
+            ];
+        }
+
+        return view('school_years.show_classes')->with('data', $data);
     }
+
+
+
 
     public function getNumberOfClasses($schoolId)
     {

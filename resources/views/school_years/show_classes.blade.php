@@ -11,8 +11,8 @@
             <div class="card-body">
                 <select id="schoolSelect" class="form-control mb-4">
                     <option value="">Select School:</option>
-                    @foreach ($schoolYears as $year)
-                        <option value="{{ $year->school_name }}" data-years="{{ $year->number_of_years }}" data-classes="{{ $year->classes_per_year }}">{{ $year->school_name }}</option>
+                    @foreach ($data as $schoolName => $info)
+                        <option value="{{ $schoolName }}" data-teachers="{{ json_encode($info['teachers']) }}" data-num-classrooms="{{ $info['numberOfClassrooms'] }}">{{ $schoolName }}</option>
                     @endforeach
                 </select>
                 
@@ -27,18 +27,18 @@
         $(document).ready(function () {
             $('#schoolSelect').change(function () {
                 var selectedSchool = $(this).val();
-                var numberOfYears = $('option:selected', this).data('years');
-                var classesPerYear = $('option:selected', this).data('classes');
+                var teachers = $('option:selected', this).data('teachers');
+                var numClassrooms = $('option:selected', this).data('num-classrooms');
 
                 $('#classSelection').empty();
 
-                for (var i = 1; i <= numberOfYears; i++) {
-                    $('#classSelection').append('<div class="mb-4"><h3>' + selectedSchool + ' - Year ' + i + '</h3></div>');
-                    
-                    for (var j = 1; j <= classesPerYear; j++) {
-                        $('#classSelection').append('<div class="form-row mb-3"><div class="col-md-6"><label for="classSelectYear' + i + '">Select Class for Year ' + i + ':</label><select id="classSelectYear' + i + '" name="class_id" class="form-control"><option value="">Select Class</option></select></div></div>');
-                    }
-                }
+                // Display number of classrooms
+                $('#classSelection').append('<div class="mb-4"><h3>Number of Classrooms: ' + numClassrooms + '</h3></div>');
+
+                // Display teachers
+                $.each(teachers, function (teacherId, teacherName) {
+                    $('#classSelection').append('<div class="mb-4"><h3>' + teacherName + '</h3></div>');
+                });
             });
         });
     </script>
