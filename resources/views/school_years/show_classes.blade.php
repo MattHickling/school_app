@@ -1,45 +1,56 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Personalized Title</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
-@section('content')
-    <div class="container mt-5">
-        <h1 class="mb-4">All School Years and Classes</h1>
-
-        <div class="card mb-4">
-            <div class="card-header bg-primary text-white">
-                <h2>School Years and Classes</h2>
-            </div>
-            <div class="card-body">
-                <select id="schoolSelect" class="form-control mb-4">
-                    <option value="">Select School:</option>
-                    @foreach ($data as $schoolName => $info)
-                        <option value="{{ $schoolName }}" data-teachers="{{ json_encode($info['teachers']) }}" data-num-classrooms="{{ $info['numberOfClassrooms'] }}">{{ $schoolName }}</option>
+<div class="container mt-5">
+    <h1 class="mb-4">All School Years and Classes</h1>
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h2>School Years and Classes</h2>
+        </div>
+        <div class="card-body">
+            <div>
+                <label for="schoolNameSelect">Select School:</label>
+                <select id="schoolNameSelect" name="school_name">
+                    @foreach ($data as $school)
+                        <option value="{{ $school['school_name'] }}">{{ $school['school_name'] }}</option>
                     @endforeach
                 </select>
-                
-                <div id="classSelection">
-                </div>
+            </div>
+            <div>
+                <label id="schoolYearsLabel">Number of Years:</label>
+                <span id="schoolYearsValue"></span>
+            </div>
+            <div id="classSelection">
+                <!-- Here you can display the selected school's classes -->
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#schoolSelect').change(function () {
-                var selectedSchool = $(this).val();
-                var teachers = $('option:selected', this).data('teachers');
-                var numClassrooms = $('option:selected', this).data('num-classrooms');
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-                $('#classSelection').empty();
-
-                // Display number of classrooms
-                $('#classSelection').append('<div class="mb-4"><h3>Number of Classrooms: ' + numClassrooms + '</h3></div>');
-
-                // Display teachers
-                $.each(teachers, function (teacherId, teacherName) {
-                    $('#classSelection').append('<div class="mb-4"><h3>' + teacherName + '</h3></div>');
-                });
-            });
+<script>
+    // Add event listener to the school name select element
+    document.getElementById('schoolNameSelect').addEventListener('change', function() {
+        // Get the selected school name
+        var selectedSchoolName = this.value;
+        // Find the school data from the data array
+        var selectedSchoolData = {!! json_encode($data) !!}.find(function(school) {
+            return school.school_name === selectedSchoolName;
         });
-    </script>
-@endsection
+        // Update the school years value on the screen
+        document.getElementById('schoolYearsValue').textContent = selectedSchoolData ? selectedSchoolData.number_of_years : '';
+    });
+</script>
+
+</body>
+</html>
