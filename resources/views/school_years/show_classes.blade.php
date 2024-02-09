@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Your Personalized Title</title>
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -29,25 +28,19 @@
                 <span id="schoolYearsValue"></span>
             </div>
             <div id="classSelection">
-                <!-- Here you can display the selected school's classes -->
             </div>
         </div>
     </div>
 </div>
 
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    // Add event listener to the school name select element
     document.getElementById('schoolNameSelect').addEventListener('change', function() {
-        // Get the selected school name
         var selectedSchoolName = this.value;
-        // Find the school data from the data array
         var selectedSchoolData = {!! json_encode($data) !!}.find(function(school) {
             return school.school_name === selectedSchoolName;
         });
-        // Update the school years value on the screen
         document.getElementById('schoolYearsValue').textContent = selectedSchoolData ? selectedSchoolData.number_of_years : '';
     });
 </script>
