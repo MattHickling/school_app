@@ -27,12 +27,17 @@
                 <label id="schoolYearsLabel">Number of Years:</label>
                 <span id="schoolYearsValue"></span>
             </div>
-            <div id="classSelection">
+            <div>
+                <label id="classesPerYearLabel">Classes per Year:</label>
+                <span id="classesPerYearValue"></span>
+            </div>
+            <div id="yearClassSelection">
             </div>
         </div>
     </div>
 </div>
 
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -41,7 +46,35 @@
         var selectedSchoolData = {!! json_encode($data) !!}.find(function(school) {
             return school.school_name === selectedSchoolName;
         });
+
         document.getElementById('schoolYearsValue').textContent = selectedSchoolData ? selectedSchoolData.number_of_years : '';
+        document.getElementById('classesPerYearValue').textContent = selectedSchoolData ? selectedSchoolData.classes_per_year : '';
+
+        var yearClassSelectionDiv = document.getElementById('yearClassSelection');
+        yearClassSelectionDiv.innerHTML = ''; // Clear previous content
+        for (var i = 1; i <= selectedSchoolData.number_of_years; i++) {
+            var yearDiv = document.createElement('div');
+            yearDiv.classList.add('mb-3');
+            yearDiv.innerHTML = '<h4>Year ' + i + ' Classes:</h4>';
+            for (var j = 1; j <= selectedSchoolData.classes_per_year; j++) {
+                var selectLabel = document.createElement('label');
+                selectLabel.textContent = 'Class ' + j + ': ';
+                var selectElement = document.createElement('select');
+                selectElement.name = 'year_' + i + '_class_' + j;
+                selectElement.innerHTML = '<option value="">Select Class</option>';
+
+
+                for (var k = 1; k <= selectedSchoolData.classes_per_year; k++) {
+                    var optionElement = document.createElement('option');
+                    optionElement.value = 'Class ' + k;
+                    optionElement.textContent = 'Class ' + k;
+                    selectElement.appendChild(optionElement);
+                }
+                yearDiv.appendChild(selectLabel);
+                yearDiv.appendChild(selectElement);
+            }
+            yearClassSelectionDiv.appendChild(yearDiv);
+        }
     });
 </script>
 
