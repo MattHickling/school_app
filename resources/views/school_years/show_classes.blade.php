@@ -7,37 +7,36 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-<div class="container mt-5">
-    <h1 class="mb-4">All School Years and Classes</h1>
-    <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-            <h2>School Years and Classes</h2>
-        </div>
-        <div class="card-body">
-            <div>
-                <label for="schoolNameSelect">Select School:</label>
-                <select id="schoolNameSelect" name="school_name">
-                    @foreach ($data as $school)
-                        <option value="{{ $school['school_name'] }}">{{ $school['school_name'] }}</option>
-                    @endforeach
-                </select>
+    <div class="container mt-5">
+        <h1 class="mb-4">All School Years and Classes</h1>
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2>School Years and Classes</h2>
             </div>
-            <div>
-                <label id="schoolYearsLabel">Number of Years:</label>
-                <span id="schoolYearsValue"></span>
-            </div>
-            <div>
-                <label id="classesPerYearLabel">Classes per Year:</label>
-                <span id="classesPerYearValue"></span>
-            </div>
-            <div id="yearClassSelection">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="schoolNameSelect">Select School:</label>
+                    <select id="schoolNameSelect" name="school_name" class="form-control">
+                        @foreach ($data as $school)
+                            <option value="{{ $school['school_name'] }}">{{ $school['school_name'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label id="schoolYearsLabel">Number of Years:</label>
+                    <span id="schoolYearsValue" class="ml-2"></span>
+                </div>
+                <div class="form-group">
+                    <label id="classesPerYearLabel">Classes per Year:</label>
+                    <span id="classesPerYearValue" class="ml-2"></span>
+                </div>
+                <div id="yearClassSelection">
+                </div>
+                
             </div>
         </div>
     </div>
-</div>
 
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
@@ -61,15 +60,16 @@
                 selectLabel.textContent = 'Class ' + j + ': ';
                 var selectElement = document.createElement('select');
                 selectElement.name = 'year_' + i + '_class_' + j;
+                selectElement.classList.add('form-control');
                 selectElement.innerHTML = '<option value="">Select Class</option>';
 
-
-                for (var k = 1; k <= selectedSchoolData.classes_per_year; k++) {
+                selectedSchoolData.classrooms.forEach(function(className) {
                     var optionElement = document.createElement('option');
-                    optionElement.value = 'Class ' + k;
-                    optionElement.textContent = 'Class ' + k;
+                    optionElement.value = className;
+                    optionElement.textContent = className;
                     selectElement.appendChild(optionElement);
-                }
+                });
+
                 yearDiv.appendChild(selectLabel);
                 yearDiv.appendChild(selectElement);
             }

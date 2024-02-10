@@ -11,5 +11,11 @@ class ClassroomSeeder extends Seeder
     {
         \App\Models\Classroom::factory(20)->create();
     }
+    
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class);
+    }
+
 }
 

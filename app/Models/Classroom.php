@@ -15,4 +15,10 @@ class Classroom extends Model
     {
         return $this->belongsTo(SchoolYear::class);
     }
+
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class);
+    }
+
 }

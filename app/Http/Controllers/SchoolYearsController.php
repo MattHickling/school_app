@@ -30,28 +30,32 @@ class SchoolYearsController extends Controller
 
     public function showClasses()
     {
+        $classNames = Classroom::pluck('class_name')->toArray();
+
         $schoolYears = SchoolYear::all();
-        
+
         $data = [];
 
         foreach ($schoolYears as $schoolYear) {
-            // Count the total number of years and classes for each school
             $numberOfYears = $schoolYear->number_of_years;
             $classesPerYear = $schoolYear->classes_per_year;
             $totalClasses = $numberOfYears * $classesPerYear;
-    
-            // Store the data in the array
+
             $data[] = [
                 'school_name' => $schoolYear->school_name,
                 'number_of_years' => $numberOfYears,
                 'classes_per_year' => $classesPerYear,
                 'total_classes' => $totalClasses,
+                'classrooms' => $classNames, 
             ];
         }
-    
-        // Pass the data to the view
+
         return view('school_years.show_classes', compact('data'));
     }
+
+
+
+
 
     public function getNumberOfClasses($schoolId)
     {
