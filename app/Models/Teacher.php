@@ -20,6 +20,8 @@ class Teacher extends Model
         'ECT',
         'leadership',
         'teaching_assistant_id',
+        'days_work_per_week',
+        'additional_qualifications',
     ];
 
     public static function boot()
@@ -35,6 +37,8 @@ class Teacher extends Model
                 'strength' => 'required',
                 'ECT' => 'nullable',
                 'leadership' => 'required|boolean',
+                'days_work_per_week' => 'required',
+                'leadership_level' => 'nullable',
             ], [
                 'title.required' => 'The title field is required.',
                 'first_name.required' => 'The first name field is required.',
@@ -42,6 +46,7 @@ class Teacher extends Model
                 'preference_of_year.required' => 'The preference of year field is required.',
                 'strength.required' => 'The strength field is required.',
                 'leadership' => 'The leadership field is required.',
+                'days_work_per_week' => 'Work days per week?'
             ]);
 
             if ($validator->fails()) {

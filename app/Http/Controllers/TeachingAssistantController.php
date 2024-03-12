@@ -27,6 +27,8 @@ class TeachingAssistantController extends Controller
             'preference_of_year' => 'required',
             'strength' => 'required',
             'higher_ta' => 'required',
+            'days_work_per_week' => 'required',
+            'additional_qualifications' => 'nullable'
         ]);
 
         TeachingAssistant::create($data);

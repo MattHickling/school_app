@@ -67,6 +67,20 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="days_work_per_week">Days per week:</label>
+                        <input type="text" name="days_work_per_week" class="form-control" required>
+                    </div>
+                </div>                
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="additional_qualifications">Additional Qualifications</label>
+                        <input type="text" name="additional_qualifications" class="form-control" required>
+                    </div>
+                </div>
+            </div>
             <button type="submit" class="btn btn-primary">Create Teaching Assistant</button>
         </form>
     </div>

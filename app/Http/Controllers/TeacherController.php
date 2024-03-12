@@ -28,6 +28,8 @@ class TeacherController extends Controller
             'strength' => 'required',
             'ECT' => 'nullable',
             'leadership' => 'required',
+            'days_work_per_week' => 'required',
+            'leadership_level' => 'nullable'
         ]);
 
         Teacher::create($data);

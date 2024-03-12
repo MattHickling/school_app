@@ -19,6 +19,8 @@ class TeachingAssistant extends Model
         'strength',
         'higher_ta',
         'teacher_id',
+        'days_work_per_week',
+        'additional_qualifications',
     ];
 
     public static function boot()
@@ -33,6 +35,7 @@ class TeachingAssistant extends Model
                 'preference_of_year' => 'required',
                 'strength' => 'required',
                 'higher_ta' => 'required|boolean',
+                'days_work_per_week' => 'required',
             ], [
                 'title.required' => 'The title field is required.',
                 'first_name.required' => 'The first name field is required.',
@@ -41,6 +44,7 @@ class TeachingAssistant extends Model
                 'strength.required' => 'The strength field is required.',
                 'higher_ta.required' => 'The higher TA field is required.',
                 'higher_ta.boolean' => 'The higher TA field must be a boolean value.',
+                'days_work_per_week' => 'How many days per week?',
             ]);
 
             if ($validator->fails()) {

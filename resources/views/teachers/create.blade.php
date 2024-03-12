@@ -77,6 +77,22 @@
                     </select>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="leadership_level">Leadership Level</label>
+                        <input type="text" name="leadership_level" class="form-control" required>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="days_work_per_week">Days per week</label>
+                        <input type="text" name="days_work_per_week" class="form-control" required>
+                    </select>
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Create Teacher</button>
     </form>
