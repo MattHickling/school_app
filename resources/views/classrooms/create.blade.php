@@ -41,6 +41,15 @@
             <label for="class_name">Class Name:</label>
             <input type="text" name="class_name" class="form-control" required>
         </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="ta">TA in this class:</label>
+                <select name="ta" class="form-control" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Create Classroom</button>
     </form>
     
