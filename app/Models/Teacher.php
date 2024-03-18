@@ -22,6 +22,7 @@ class Teacher extends Model
         'teaching_assistant_id',
         'days_work_per_week',
         'additional_qualifications',
+        'leadership_level',
     ];
 
     public static function boot()
