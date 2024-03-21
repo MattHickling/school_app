@@ -35,4 +35,8 @@
         </div>
     </div>
 </div>
+<div class="jumbotron bg-white">
+    <p class="lead">Effortlessly manage teachers, teaching assistants, classrooms, and more with our user-friendly interface and comprehensive features. Whether it's adding new teachers, creating classrooms, or managing school years, our platform empowers you to efficiently navigate the complexities of educational administration. Experience the convenience and efficiency of our app as you optimize your school's operations and enhance the learning environment for students and staff alike.</p>
+</div>
+
 @endsection
