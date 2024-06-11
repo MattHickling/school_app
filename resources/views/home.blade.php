@@ -23,6 +23,9 @@
                         <li class="list-group-item">
                             <a href="{{ route('school_years.show_classes') }}" class="btn btn-primary btn-block">Show School Year Classes</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="{{ route('weather') }}" class="btn btn-primary btn-block">Check Weather</a>
+                        </li>
                     </ul>
                 </div>
             </div>

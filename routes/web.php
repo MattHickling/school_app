@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Livewire\SchoolYearsShowClasses;
 use App\Http\Controllers\SchoolYearsController;
 use App\Http\Controllers\TeachingAssistantController;
-use App\Http\Livewire\SchoolYearsShowClasses;
 
 Route::get('/', function () {
     return view('home');
@@ -32,3 +33,4 @@ Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'
 Route::get('/school-years/classes', [SchoolYearsController::class, 'showClasses'])->name('school_years.show_classes');
 
 // Route::get('/get-number-of-classes/{schoolYear}/{classId}', [SchoolYearsController::class, 'getNumberOfClasses']);
+Route::get('/weather', [WeatherController::class, 'showWeather'])->name('weather');
