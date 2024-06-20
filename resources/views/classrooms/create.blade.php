@@ -46,8 +46,12 @@
                 <label for="ta">TA in this class:</label>
                 <select name="ta" class="form-control" required>
                     <option value="1">Yes</option>
-                    <option value="0">No</option>
+                    <option value="0" selected>No</option>
                 </select>
+                <div class="form-group">
+                    <label for="number_of_sen">Number of SEN:</label>
+                    <input type="number" name="number_of_sen" class="form-control" required>
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Create Classroom</button>

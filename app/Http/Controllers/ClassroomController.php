@@ -20,6 +20,7 @@ class ClassroomController extends Controller
             'number_of_pupils' => 'required|integer',
             'class_name' => 'required',
             'school_year_id' => 'exists:school_years,id', 
+            'number_of_sen' => 'required',
         ]);
 
        
